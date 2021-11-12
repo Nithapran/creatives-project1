@@ -11,7 +11,7 @@ import {
 } from "@expo-google-fonts/montserrat";
 
 
-const MainScreen = ({ }) => {
+const MainScreen = ({navigation}: {navigation: any}) => {
 
   let [fontsLoaded, error] = useFonts({
     Montserrat_400Regular,
@@ -21,6 +21,16 @@ const MainScreen = ({ }) => {
 
   if (!fontsLoaded) {
     return <AppLoading />
+  }
+
+  const vegetableButtonPressedHandler = () => {
+    console.log("Vegetables Pressed!");
+    navigation.push('List');
+  }
+
+  const fruitButtonPressedHandler = () => {
+    console.log("Fruits Pressed!");
+    navigation.navigate('List');
   }
 
   return (
@@ -45,6 +55,7 @@ const MainScreen = ({ }) => {
           style={styles.boxStyle}
           onPress={() => {
             console.log("Vegetables Pressed!");
+            navigation.navigate('Lists');
           }}>
           <Image
             style={styles.image1Style}
@@ -55,7 +66,7 @@ const MainScreen = ({ }) => {
         <TouchableOpacity
           style={styles.boxStyle}
           onPress={() => {
-            console.log("Fruits Pressed!");
+            fruitButtonPressedHandler
           }}>
           <Image
             style={styles.image2Style}
