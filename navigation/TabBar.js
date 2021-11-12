@@ -26,6 +26,7 @@ const tabs = () => {
         }}>
             <tab.Screen name="Main" component={HomeScreen}
             options={{
+                headerShown: false,
                 tabBarIcon:({focused}) => (
                     <View style={{alignItems: 'center', justifyContent: 'center'}}>
                         <Image
