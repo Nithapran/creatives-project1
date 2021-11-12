@@ -23,15 +23,6 @@ const MainScreen = ({navigation}: {navigation: any}) => {
     return <AppLoading />
   }
 
-  const vegetableButtonPressedHandler = () => {
-    console.log("Vegetables Pressed!");
-    navigation.push('List');
-  }
-
-  const fruitButtonPressedHandler = () => {
-    console.log("Fruits Pressed!");
-    navigation.navigate('List');
-  }
 
   return (
     <View style={styles.container}>
@@ -66,7 +57,8 @@ const MainScreen = ({navigation}: {navigation: any}) => {
         <TouchableOpacity
           style={styles.boxStyle}
           onPress={() => {
-            fruitButtonPressedHandler
+            console.log("Fruits Pressed!");
+            navigation.navigate('Lists');
           }}>
           <Image
             style={styles.image2Style}
