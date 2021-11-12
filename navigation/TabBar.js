@@ -3,8 +3,12 @@ import * as React from 'react';
 import MainScreen from '../screens/MainScreen';
 import FavouriteScreen from '../screens/FavouriteScreen';
 import SettingsScreen from '../screens/SettingsScreen';
+import HomeScreen from '../screens/HomeScreen';
+
 
 import {StyleSheet,View,Image,Text} from "react-native" ;
+
+
 
 const tab = createBottomTabNavigator();
 
@@ -20,7 +24,7 @@ const tabs = () => {
                 height: 90
             }
         }}>
-            <tab.Screen name="Main" component={MainScreen}
+            <tab.Screen name="Main" component={HomeScreen}
             options={{
                 tabBarIcon:({focused}) => (
                     <View style={{alignItems: 'center', justifyContent: 'center'}}>
