@@ -24,7 +24,7 @@ const tabs = () => {
                 height: 90
             }
         }}>
-            <tab.Screen name="Main" component={HomeScreen}
+            <tab.Screen name="Home" component={HomeScreen}
             options={{
                 headerShown: false,
                 tabBarIcon:({focused}) => (
