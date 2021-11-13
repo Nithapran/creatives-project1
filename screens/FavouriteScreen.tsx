@@ -1,5 +1,5 @@
 import React from 'react';
-import { SafeAreaView, View, FlatList, StyleSheet, Text, StatusBar } from 'react-native';
+import { SafeAreaView, View, FlatList, StyleSheet, Text, StatusBar, TouchableOpacity } from 'react-native';
 
 import ListItem from '../compornents/ListItem';
 
@@ -11,16 +11,20 @@ const DATA = [
     
   ];
 
-const ListScreen = () => {
+const ListScreen = ({navigation}: {navigation: any}) => {
    
   
     return (
       <SafeAreaView style={styles.container}>
+        <TouchableOpacity onPress={() => {
+          navigation.navigate('Detail');
+          }}>
         <FlatList
           data={DATA}
           renderItem={ListItem}
           keyExtractor={item => item.id}
         />
+        </TouchableOpacity>
       </SafeAreaView>
     );
   }
