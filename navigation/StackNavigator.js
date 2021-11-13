@@ -18,7 +18,7 @@ function StackNavigator() {
       <Stack.Navigator>
         <Stack.Screen name="Main" component={MainScreen}  />
         <Stack.Screen name="Lists" component={ListScreen} /> 
-        <Stack.Screen name="Detail" component={ListScreen} />
+        <Stack.Screen name="Detail" component={DetailScreen} />
       </Stack.Navigator>
   );
 }
