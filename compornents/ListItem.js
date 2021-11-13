@@ -1,7 +1,10 @@
 
+import { useNavigation } from '@react-navigation/core';
+import { NavigationContainer } from '@react-navigation/native';
 import * as React from 'react';
 import { View,Image, Switch,Text ,StyleSheet} from 'react-native';
 import { ListItem, Avatar } from 'react-native-elements'
+
 
 var item = {
     name: "Apple",
@@ -12,7 +15,7 @@ var item = {
 
 const tabs = () => {
     return(
-        <ListItem bottomDivider={false} containerStyle= {styles.container} >
+        <ListItem bottomDivider={false}  containerStyle= {styles.container} >
         <Avatar rounded={true} style={styles.avatarStyle} source={{uri: item.URL}} />
         <ListItem.Content>
           <ListItem.Title style={styles.titleSyle}>{item.name}</ListItem.Title>

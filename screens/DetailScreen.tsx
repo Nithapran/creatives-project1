@@ -2,8 +2,25 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View,SafeAreaView,Image, Button, Alert, TouchableWithoutFeedback, TouchableOpacity , Platform} from 'react-native';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
+import AppLoading from "expo-app-loading";
 import COLORS from '../colors';
+import {
+  useFonts,
+  Montserrat_400Regular,
+  Montserrat_500Medium,
+  Montserrat_700Bold
+} from "@expo-google-fonts/montserrat";
 export default function App() {
+
+  let [fontsLoaded, error] = useFonts({
+    Montserrat_400Regular,
+    Montserrat_500Medium,
+    Montserrat_700Bold
+  });
+
+  if (!fontsLoaded) {
+    return <AppLoading />
+  }
   return (
     <SafeAreaView style={{flex:1 , backgroundColor:COLORS.topback}}>
         {/* <View style={{flex:.15, backgroundColor:'green',padding:20,flexDirection:'row',justifyContent:'space-between'}}>
@@ -27,7 +44,7 @@ export default function App() {
         </View>
         <View style={{flex:1.5, backgroundColor:'white',borderTopLeftRadius:40,borderTopRightRadius:40,padding:30}}>
               <View style={{flex:.50}}>
-                <Text style={{fontFamily: "Montserrat", fontSize:40,fontWeight:"600"}}>Orange</Text>
+                <Text style={{fontFamily: "Montserrat_500Medium", fontSize:40,fontWeight:"600"}}>Orange</Text>
                 </View> 
               <View style={{flex:.40,flexDirection:'row',paddingTop:10,alignItems:'baseline'}}>
                       <Image style={{height:20,width:20}}
