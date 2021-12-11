@@ -1,6 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import React, { Component } from "react";
-import Apploading from 'expo-app-loading';
+import Apploading from "expo-app-loading";
 import {
   StyleSheet,
   Text,
@@ -8,18 +8,19 @@ import {
   Image,
   TouchableOpacity,
   Switch,
+  Alert,
 } from "react-native";
 import { useFonts, Montserrat_400Regular } from "@expo-google-fonts/montserrat";
 import AppLoading from "expo-app-loading";
 
-
-const SettingsScreen = ({}) => {
+const SettingsScreen = (props: any) => {
+  const { navigation, route } = props;
   let [fontsLoaded, error] = useFonts({
     Montserrat_400Regular,
   });
 
   if (!fontsLoaded) {
-    return <AppLoading/>;
+    return <AppLoading />;
   }
   return (
     <View style={styles.container}>
@@ -93,11 +94,25 @@ const SettingsScreen = ({}) => {
           source={require("../assets/aboutIcon.png")}
         />
         <View style={styles.boxOne}>
-          <Text style={styles.textStyle}>About</Text>
+          <Text style={styles.textStyle}>Logout</Text>
         </View>
         <TouchableOpacity
           onPress={() => {
-            console.log("pressed Bug Report");
+            Alert.alert("Attention!", "Are you sure you want to sign out?", [
+              {
+                text: "No",
+                onPress: () => {},
+              },
+              {
+                text: "Yes",
+                onPress: () => {
+                  navigation.reset({
+                    index: 0,
+                    routes: [{ name: "Landing" }],
+                  });
+                },
+              },
+            ]);
           }}
         >
           <Image

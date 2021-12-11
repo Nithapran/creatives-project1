@@ -89,13 +89,14 @@ const styles = StyleSheet.create({
     height: 52,
     justifyContent: "center",
     backgroundColor: "#F8F8F8",
-    borderRadius: 10
+    borderRadius: 10,
+    marginTop: 25
   },
   searchTextStyle: {
     fontFamily: "Montserrat_400Regular",
     fontSize: 14,
     position: "absolute",
-    marginLeft: 50
+    marginLeft: 50.
   },
   category: {
     paddingTop: 25,
