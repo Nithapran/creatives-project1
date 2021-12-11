@@ -89,6 +89,7 @@ const ListScreen = ({navigation}: {navigation: any}) => {
       alignItems: "center",
       flexDirection: "row",
       flexWrap: "wrap",
+      marginTop:25
     },
     searchBarContainerStyle: {
       flex: 1,
