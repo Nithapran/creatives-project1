@@ -24,7 +24,7 @@ function StackNavigator() {
     >
       {/*Logged Out Pages*/}
       <Stack.Screen name="Landing" component={LandingPage} />
-      <Stack.Screen name="SignUpPage" component={SignUpPage} />
+      <Stack.Screen name="SignUpPage" component={SignUpPage}/>
       <Stack.Screen name="LoginPage" component={LoginPage} />
 
       {/*Logged In Pages*/}

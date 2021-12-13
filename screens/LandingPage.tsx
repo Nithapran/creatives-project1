@@ -11,6 +11,7 @@ import {
   TouchableOpacity,
   Button,
 } from "react-native";
+import { baseProps } from "react-native-gesture-handler/lib/typescript/handlers/gestureHandlers";
 
 const LandingPage = ({ navigation }: { navigation: any }) => {
   return (

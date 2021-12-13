@@ -9,7 +9,10 @@ import { StyleSheet, View, Image, Text } from "react-native";
 
 const tab = createBottomTabNavigator();
 
-const AfterLogin = () => {
+const AfterLogin = ({ route }: { route: any }) => {
+  const { profileName } = route.params;
+  let name: string = profileName;
+
   return (
     <tab.Navigator
       screenOptions={{
@@ -27,7 +30,7 @@ const AfterLogin = () => {
         name="Main"
         component={MainScreen}
         options={{
-          headerShown: false,
+          title: name,
           tabBarIcon: ({ focused }) => (
             <View style={{ alignItems: "center", justifyContent: "center" }}>
               <Image
@@ -55,6 +58,7 @@ const AfterLogin = () => {
         name="Favourite"
         component={FavouriteScreen}
         options={{
+          title: name,
           tabBarIcon: ({ focused }) => (
             <View style={{ alignItems: "center", justifyContent: "center" }}>
               <Image
@@ -82,6 +86,7 @@ const AfterLogin = () => {
         name="Settings"
         component={SettingsScreen}
         options={{
+          title: name,
           tabBarIcon: ({ focused }) => (
             <View style={{ alignItems: "center", justifyContent: "center" }}>
               <Image

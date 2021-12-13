@@ -15,7 +15,7 @@ import { useFonts, Montserrat_400Regular } from "@expo-google-fonts/montserrat";
 import AppLoading from "expo-app-loading";
 
 const LoginPage = ({ navigation }: { navigation: any }) => {
-  const [textInputValue, onChangeText] = React.useState("");
+  const [username, setUsername] = React.useState("Guest");
   let [fontsLoaded, error] = useFonts({
     Montserrat_400Regular,
   });
@@ -39,18 +39,23 @@ const LoginPage = ({ navigation }: { navigation: any }) => {
         <TextInput
           style={styles.input}
           placeholder="username"
-          onChangeText={(text) => onChangeText(text)}
-          value={textInputValue}
+          onChangeText={(text) => setUsername(text)}
         />
+
         <Text style={styles.UserPasswordText}>Password</Text>
-        <TextInput style={styles.input} placeholder="password" />
+        <TextInput
+          style={styles.input}
+          secureTextEntry={true}
+          placeholder="password"
+        />
         <View style={styles.navButtonsWrapper}>
           <TouchableOpacity
             style={styles.buttonStyle}
             onPress={() => {
+              let profileName = "Welcome " + username;
               navigation.reset({
                 index: 0,
-                routes: [{ name: "AfterLogin" }],
+                routes: [{ name: "AfterLogin", params: { profileName } }],
               });
             }}
           >
