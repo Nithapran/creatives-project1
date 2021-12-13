@@ -1,4 +1,3 @@
-import { NavigationRouteContext } from "@react-navigation/core";
 import React from "react";
 import {
   SafeAreaView,
