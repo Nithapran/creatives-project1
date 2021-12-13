@@ -1,4 +1,6 @@
 import React from "react";
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+
 import {
   SafeAreaView,
   View,
@@ -26,6 +28,7 @@ const LoginPage = ({ navigation }: { navigation: any }) => {
 
   return (
     <SafeAreaView style={styles.wrapper}>
+      <KeyboardAwareScrollView>
       <View style={styles.topBox}>
         <Image
           style={styles.iconStyle}
@@ -63,6 +66,7 @@ const LoginPage = ({ navigation }: { navigation: any }) => {
           </TouchableOpacity>
         </View>
       </View>
+      </KeyboardAwareScrollView>
     </SafeAreaView>
   );
 };
