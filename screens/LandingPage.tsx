@@ -9,6 +9,7 @@ import {
   TextInput,
   StatusBar,
   TouchableOpacity,
+  ImageBackground,
   Button,
 } from "react-native";
 import { baseProps } from "react-native-gesture-handler/lib/typescript/handlers/gestureHandlers";
@@ -16,12 +17,17 @@ import { baseProps } from "react-native-gesture-handler/lib/typescript/handlers/
 const LandingPage = ({ navigation }: { navigation: any }) => {
   return (
     <SafeAreaView style={styles.wrapper}>
+      <ImageBackground
+      style={{flex:1}}
+      source={require('../assets/bgf.jpg')}>
+
       <View style={styles.topBox}>
+        <Text style={styles.textStyle}>Welcome</Text>
         <Image
           style={styles.iconStyle}
-          source={require("./assets/placeholder_logo.png")}
-        />
-        <Text style={styles.textStyle}>Welcome to Harvest</Text>
+          source={require("../assets/logo.png")}
+          />
+        
       </View>
 
       <View style={styles.bottomBox}>
@@ -31,7 +37,7 @@ const LandingPage = ({ navigation }: { navigation: any }) => {
             onPress={() => {
               navigation.navigate("SignUpPage");
             }}
-          >
+            >
             <Text style={styles.buttonFont}>Sign Up</Text>
           </TouchableOpacity>
 
@@ -40,11 +46,12 @@ const LandingPage = ({ navigation }: { navigation: any }) => {
             onPress={() => {
               navigation.navigate("LoginPage");
             }}
-          >
+            >
             <Text style={styles.buttonFont}>Login</Text>
           </TouchableOpacity>
         </View>
       </View>
+            </ImageBackground>
     </SafeAreaView>
   );
 };
@@ -69,25 +76,32 @@ const styles = StyleSheet.create({
     height: 100,
   },
   iconStyle: {
-    width: 150,
-    height: 150,
+    marginTop:50,
+    width: 250,
+    height: 250,
   },
 
   buttonStyle: {
     backgroundColor: "black",
-    padding: 10,
+    padding: 18,
+    marginTop: 5,
+    borderRadius:20,
     alignItems: "center",
-    marginBottom: 25,
+    marginBottom: 5,
   },
 
   buttonFont: {
+    fontSize:20,
     color: "white",
   },
 
   textStyle: {
-    fontSize: 32,
-    fontFamily: "",
+    marginTop:150,
+    textAlign:"center",
+    fontSize: 40,
+    fontFamily: "Montserrat_400Regular",
   },
+  
 });
 
 export default LandingPage;

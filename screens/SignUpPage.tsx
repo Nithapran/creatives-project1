@@ -14,6 +14,7 @@ import {
   TouchableOpacity,
   Alert,
   Button,
+  ImageBackground,
 } from "react-native";
 import { useFonts, Montserrat_400Regular } from "@expo-google-fonts/montserrat";
 import AppLoading from "expo-app-loading";
@@ -78,24 +79,30 @@ const SignUpPage = ({ navigation }: { navigation: any }) => {
 
   return (
     <SafeAreaView style={styles.wrapper}>
+      <ImageBackground
+      style={{flex:1}}
+      source={require('../assets/bgf.jpg')}>
+
       <KeyboardAwareScrollView>
         <View style={styles.topBox}>
+          
+          <Text style={styles.textStyle}>Welcome</Text>
+          <Text style={styles.textStyle}>Sign Up here</Text>
           <Image
             style={styles.iconStyle}
-            source={require("./assets/placeholder_logo.png")}
-          />
-          <Text style={styles.textStyle}>Sign Up With Harvest</Text>
+            source={require("../assets/register.png")}
+            />
         </View>
 
         <View style={styles.bottomBox}>
-          <Text style={styles.UserPasswordText}>Username</Text>
+          <Text style={styles.UserPasswordText}>Email</Text>
           <TextInput
             style={styles.input}
-            placeholder="username"
+            placeholder="Email"
             value={user}
             autoCapitalize="none"
             onChangeText={(text) => setUsername(text)}
-          />
+            />
           <Text style={styles.UserPasswordText}>Password</Text>
           <TextInput
             style={styles.input}
@@ -103,7 +110,7 @@ const SignUpPage = ({ navigation }: { navigation: any }) => {
             placeholder="password"
             value={pass}
             onChangeText={(text) => setPassword(text)}
-          />
+            />
           <Text style={styles.UserPasswordText}>Confirm Password</Text>
           <TextInput
             style={styles.input}
@@ -111,7 +118,7 @@ const SignUpPage = ({ navigation }: { navigation: any }) => {
             placeholder="password"
             value={passConfirm}
             onChangeText={(text) => setPasswordConfirm(text)}
-          />
+            />
           <Text>{status}</Text>
           <View style={styles.navButtonsWrapper}>
             <TouchableOpacity
@@ -119,12 +126,13 @@ const SignUpPage = ({ navigation }: { navigation: any }) => {
               onPress={() => {
                 signUp();
               }}
-            >
+              >
               <Text style={styles.buttonFont}>Sign Up</Text>
             </TouchableOpacity>
           </View>
         </View>
       </KeyboardAwareScrollView>
+</ImageBackground>
     </SafeAreaView>
   );
 };
@@ -149,24 +157,29 @@ const styles = StyleSheet.create({
     height: 100,
   },
   iconStyle: {
-    width: 150,
-    height: 150,
+    marginTop:20,
+    width: 50,
+    height: 50,
   },
 
   buttonStyle: {
     backgroundColor: "black",
-    padding: 10,
+  
     alignItems: "center",
     marginBottom: 25,
-    marginTop: 25,
+    marginTop: 5,
+    borderRadius:20,
+    padding:18,
   },
 
   buttonFont: {
+    fontSize:20,
     color: "white",
   },
 
   textStyle: {
     fontSize: 32,
+    fontFamily: "Montserrat_400Regular",
   },
   UserPasswordText: {
     fontFamily: "Montserrat_400Regular",
@@ -174,10 +187,11 @@ const styles = StyleSheet.create({
     margin: 12,
   },
   input: {
+    borderRadius:20,
     height: 40,
     margin: 12,
     borderWidth: 1,
-    padding: 10,
+    padding: 25,
   },
 });
 

@@ -14,6 +14,7 @@ import {
   TouchableOpacity,
   Button,
   Alert,
+  ImageBackground,
 } from "react-native";
 import { useFonts, Montserrat_400Regular } from "@expo-google-fonts/montserrat";
 import AppLoading from "expo-app-loading";
@@ -67,25 +68,32 @@ const LoginPage = ({ navigation }: { navigation: any }) => {
 
   return (
     <SafeAreaView style={styles.wrapper}>
+      <ImageBackground
+      style={{flex:1}}
+      source={require('../assets/bgf.jpg')}>
+
       <KeyboardAwareScrollView>
         <View style={styles.topBox}>
+          
+          <Text style={styles.textStyle}>Welcome</Text>
+          <Text style={styles.textStyle}>Login to Harvest</Text>
           <Image
             style={styles.iconStyle}
-            source={require("./assets/placeholder_logo.png")}
+            source={require("../assets/login.png")}
           />
-          <Text style={styles.textStyle}>Login to Harvest</Text>
         </View>
 
         <View style={styles.bottomBox}>
-          <Text style={styles.UserPasswordText}>Username</Text>
+        
+          <Text style={styles.UserPasswordText}>Email</Text>
           <TextInput
             style={styles.input}
-            placeholder="username"
+            placeholder="Email"
             onChangeText={(text) => setUsername(text)}
             value={username}
             keyboardType="email-address"
             autoCapitalize="none"
-          />
+            />
 
           <Text style={styles.UserPasswordText}>Password</Text>
           <TextInput
@@ -93,7 +101,7 @@ const LoginPage = ({ navigation }: { navigation: any }) => {
             secureTextEntry={true}
             onChangeText={(text) => setPassword(text)}
             placeholder="password"
-          />
+            />
           <Text>{status}</Text>
           <View style={styles.navButtonsWrapper}>
             <TouchableOpacity
@@ -101,12 +109,13 @@ const LoginPage = ({ navigation }: { navigation: any }) => {
               onPress={() => {
                 login();
               }}
-            >
+              >
               <Text style={styles.buttonFont}>Login</Text>
             </TouchableOpacity>
           </View>
         </View>
       </KeyboardAwareScrollView>
+              </ImageBackground>
     </SafeAreaView>
   );
 };
@@ -123,6 +132,7 @@ const styles = StyleSheet.create({
   },
 
   bottomBox: {
+    
     flex: 2,
     justifyContent: "flex-end",
     padding: 50,
@@ -131,36 +141,44 @@ const styles = StyleSheet.create({
     height: 100,
   },
   iconStyle: {
-    width: 150,
-    height: 150,
+    marginTop:20,//
+    width: 50,
+    height: 50,
   },
 
   buttonStyle: {
+    
     backgroundColor: "black",
-    padding: 10,
+    
     alignItems: "center",
     marginBottom: 25,
-    marginTop: 25,
+    marginTop: 5,
+    borderRadius:20,//
+    padding:18,//
   },
 
   buttonFont: {
+    fontSize:20,//
     color: "white",
   },
 
   textStyle: {
     fontSize: 32,
-    fontFamily: "",
+    marginTop:20,
+    fontFamily: "Montserrat_400Regular",
   },
   UserPasswordText: {
     fontFamily: "Montserrat_400Regular",
     fontSize: 20,
+    
     margin: 12,
   },
   input: {
+    borderRadius:20,
     height: 40,
     margin: 12,
     borderWidth: 1,
-    padding: 10,
+    padding: 25,
   },
 });
 
