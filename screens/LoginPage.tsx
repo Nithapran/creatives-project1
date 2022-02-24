@@ -80,7 +80,7 @@ const LoginPage = ({ navigation }: { navigation: any }) => {
               marginTop: 20,
               fontFamily: "Raleway",
               fontWeight: "800",
-              color:"grey",
+              color:"bf9449",
               fontSize: 15,
             }}
           >
