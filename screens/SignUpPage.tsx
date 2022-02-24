@@ -79,31 +79,34 @@ const SignUpPage = ({ navigation }: { navigation: any }) => {
 
   return (
     <SafeAreaView style={styles.wrapper}>
-      <ImageBackground
-      style={{flex:1}}
-      source={require('../assets/bgf.jpg')}>
+      
 
       <KeyboardAwareScrollView>
         <View style={styles.topBox}>
           
-          <Text style={styles.textStyle}>Welcome</Text>
-          <Text style={styles.textStyle}>Sign Up here</Text>
-          <Image
-            style={styles.iconStyle}
-            source={require("../assets/register.png")}
-            />
-        </View>
-
-        <View style={styles.bottomBox}>
-          <Text style={styles.UserPasswordText}>Email</Text>
-          <TextInput
+        <Image
+            style={styles.logoStyle}
+            source={require("../assets/newlogo.png")}
+          />
+          <Text
+            style={{
+              marginTop: 20,
+              fontFamily: "Raleway",
+              fontWeight: "800",
+              color:"grey",
+              fontSize: 15,
+            }}
+          >
+            All Produce In One Place
+          </Text>
+            <TextInput
             style={styles.input}
             placeholder="Email"
             value={user}
             autoCapitalize="none"
             onChangeText={(text) => setUsername(text)}
             />
-          <Text style={styles.UserPasswordText}>Password</Text>
+          
           <TextInput
             style={styles.input}
             secureTextEntry={true}
@@ -111,7 +114,7 @@ const SignUpPage = ({ navigation }: { navigation: any }) => {
             value={pass}
             onChangeText={(text) => setPassword(text)}
             />
-          <Text style={styles.UserPasswordText}>Confirm Password</Text>
+          
           <TextInput
             style={styles.input}
             secureTextEntry={true}
@@ -120,19 +123,18 @@ const SignUpPage = ({ navigation }: { navigation: any }) => {
             onChangeText={(text) => setPasswordConfirm(text)}
             />
           <Text>{status}</Text>
-          <View style={styles.navButtonsWrapper}>
-            <TouchableOpacity
-              style={styles.buttonStyle}
-              onPress={() => {
-                signUp();
-              }}
-              >
-              <Text style={styles.buttonFont}>Sign Up</Text>
-            </TouchableOpacity>
-          </View>
+          <TouchableOpacity
+            style={styles.buttonStyle}
+            onPress={() => {
+              signUp();
+            }}
+          >
+            <Text style={styles.buttonText}>Sign Up</Text>
+          </TouchableOpacity>
         </View>
+
+        
       </KeyboardAwareScrollView>
-</ImageBackground>
     </SafeAreaView>
   );
 };
@@ -142,10 +144,10 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   topBox: {
-    flex: 3,
-    justifyContent: "space-evenly",
-    alignItems: "center",
-    padding: 50,
+    justifyContent: 'center',
+alignItems: 'center',
+flex: 1,
+marginBottom:20
   },
 
   bottomBox: {
@@ -161,15 +163,23 @@ const styles = StyleSheet.create({
     width: 50,
     height: 50,
   },
+  logoStyle: {
+    marginTop: 20, //
+    width: 100,
+    height: 100,
+    borderColor:"#616161",
+    borderRadius:50,
+    borderWidth:0.2,
+  },
 
   buttonStyle: {
+    marginTop: 20,
+    height: 50,
+    width: "90%",
+    borderRadius: 15,
+
     backgroundColor: "black",
-  
-    alignItems: "center",
-    marginBottom: 25,
-    marginTop: 5,
-    borderRadius:20,
-    padding:18,
+    justifyContent: "center",
   },
 
   buttonFont: {
@@ -187,11 +197,26 @@ const styles = StyleSheet.create({
     margin: 12,
   },
   input: {
-    borderRadius:20,
     height: 40,
-    margin: 12,
-    borderWidth: 1,
-    paddingLeft: 25,
+    width: "90%",
+    borderRadius: 10,
+    marginTop: 20,
+    paddingLeft: 20,
+    backgroundColor: "#f8f8f8",
+    shadowColor: "#999999",
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    shadowOpacity: 0.62,
+    shadowRadius: 7.46,
+    elevation: 9,
+  },
+  buttonText: {
+    color: "white",
+    textAlign: "center",
+    fontSize: 16,
+    fontWeight: "900",
   },
 });
 

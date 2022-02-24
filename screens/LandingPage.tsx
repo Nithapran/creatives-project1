@@ -25,7 +25,7 @@ const LandingPage = ({ navigation }: { navigation: any }) => {
         <Text style={styles.textStyle}>Welcome</Text>
         <Image
           style={styles.iconStyle}
-          source={require("../assets/logo.png")}
+          source={require("../assets/newlogo.png")}
           />
         
       </View>
