@@ -1,5 +1,5 @@
 import * as React from "react";
-import { View, Image, Switch, Text, StyleSheet } from "react-native";
+import { View, Image, Switch, Text, StyleSheet,TouchableOpacity } from "react-native";
 import { ListItem, Avatar } from "react-native-elements";
 
 var item = {
@@ -10,8 +10,13 @@ var item = {
   location: "Canada",
 };
 
-const tabs = ({ produce }) => {
+const tabs = ({ produce,navigation }) => {
   return (
+    <TouchableOpacity
+    onPress={() => {
+      navigation.navigate("Detail");
+    }}
+  >
     <ListItem bottomDivider={false} containerStyle={styles.container}>
       <Avatar
         rounded={true}
@@ -39,6 +44,7 @@ const tabs = ({ produce }) => {
         </View>
       </ListItem.Content>
     </ListItem>
+    </TouchableOpacity>
   );
 };
 

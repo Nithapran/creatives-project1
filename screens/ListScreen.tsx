@@ -10,7 +10,6 @@ import {
   Image,
   TextInput,
   StatusBar,
-  TouchableOpacity,
 } from "react-native";
 import { Icon } from "react-native-elements";
 import { Feather } from "@expo/vector-icons";
@@ -41,15 +40,11 @@ const ListScreen = ({ route,navigation }: { navigation: any }) => {
     getUserInfo();
   })
   const renderItem = ({ item }) => (
-    <ListItem produce={item} />
+    <ListItem produce={item} navigation={navigation} />
   );
   return (
     <SafeAreaView style={styles.container}>
-      <TouchableOpacity
-        onPress={() => {
-          navigation.navigate("Detail");
-        }}
-      >
+     
         <View style={styles.topBarContainerStyle}>
           <View style={styles.searchBarContainerStyle}>
             <Image
@@ -75,7 +70,7 @@ const ListScreen = ({ route,navigation }: { navigation: any }) => {
           renderItem={renderItem}
           keyExtractor={(item) => item.id}
         />
-      </TouchableOpacity>
+     
     </SafeAreaView>
   );
 };
