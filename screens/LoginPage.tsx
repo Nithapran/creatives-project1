@@ -16,11 +16,51 @@ import {
   Alert,
   ImageBackground,
 } from "react-native";
-import { useFonts, Montserrat_400Regular } from "@expo-google-fonts/montserrat";
+import {
+  useFonts,
+  Raleway_100Thin,
+  Raleway_200ExtraLight,
+  Raleway_300Light,
+  Raleway_400Regular,
+  Raleway_500Medium,
+  Raleway_600SemiBold,
+  Raleway_700Bold,
+  Raleway_800ExtraBold,
+  Raleway_900Black,
+  Raleway_100Thin_Italic,
+  Raleway_200ExtraLight_Italic,
+  Raleway_300Light_Italic,
+  Raleway_400Regular_Italic,
+  Raleway_500Medium_Italic,
+  Raleway_600SemiBold_Italic,
+  Raleway_700Bold_Italic,
+  Raleway_800ExtraBold_Italic,
+  Raleway_900Black_Italic,
+} from '@expo-google-fonts/raleway';
 import AppLoading from "expo-app-loading";
 import { color } from "react-native-elements/dist/helpers";
 
 const LoginPage = ({ navigation }: { navigation: any }) => {
+  let [fontsLoaded] = useFonts({
+    Raleway_100Thin,
+    Raleway_200ExtraLight,
+    Raleway_300Light,
+    Raleway_400Regular,
+    Raleway_500Medium,
+    Raleway_600SemiBold,
+    Raleway_700Bold,
+    Raleway_800ExtraBold,
+    Raleway_900Black,
+    Raleway_100Thin_Italic,
+    Raleway_200ExtraLight_Italic,
+    Raleway_300Light_Italic,
+    Raleway_400Regular_Italic,
+    Raleway_500Medium_Italic,
+    Raleway_600SemiBold_Italic,
+    Raleway_700Bold_Italic,
+    Raleway_800ExtraBold_Italic,
+    Raleway_900Black_Italic,
+  });
   const [username, setUsername] = React.useState("");
   const [password, setPassword] = useState("");
   const [status, setStatus] = useState("");
@@ -59,9 +99,9 @@ const LoginPage = ({ navigation }: { navigation: any }) => {
       });
   }
 
-  let [fontsLoaded, error] = useFonts({
-    Montserrat_400Regular,
-  });
+  // let [fontsLoaded, error] = useFonts({
+  //   Montserrat_400Regular,
+  // });
 
   if (!fontsLoaded) {
     return <AppLoading />;
@@ -78,9 +118,8 @@ const LoginPage = ({ navigation }: { navigation: any }) => {
           <Text
             style={{
               marginTop: 20,
-              fontFamily: "Raleway",
-              fontWeight: "800",
-              color:"bf9449",
+              fontFamily: "Raleway_800ExtraBold",
+              color:"#bf9449",
               fontSize: 15,
             }}
           >
@@ -109,7 +148,7 @@ const LoginPage = ({ navigation }: { navigation: any }) => {
             <Text style={styles.buttonText}>Login</Text>
           </TouchableOpacity>
           <Text
-            style={{ marginTop: 20, fontFamily: "Raleway", fontWeight: "700" }}
+            style={{ marginTop: 20, fontFamily: "Raleway_700Bold", fontWeight: "700" }}
           >
             Didn't have an account?{" "}
           </Text>
@@ -122,7 +161,7 @@ const LoginPage = ({ navigation }: { navigation: any }) => {
             <Text
               style={{
                 color: "blue",
-                fontFamily: "Raleway",
+                fontFamily: "Raleway_700Bold",
                 fontWeight: "700",
               }}
             >
@@ -170,18 +209,6 @@ marginBottom:20
   buttonFont: {
     fontSize: 20, //
     color: "white",
-  },
-
-  textStyle: {
-    fontSize: 32,
-    marginTop: 20,
-    fontFamily: "Montserrat_400Regular",
-  },
-  UserPasswordText: {
-    fontFamily: "Montserrat_400Regular",
-    fontSize: 20,
-
-    margin: 12,
   },
   input: {
     height: 40,
