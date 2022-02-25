@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import firebase from "firebase/compat";
+import "firebase/compat/firestore";
 import {
   SafeAreaView,
   View,
@@ -14,34 +16,33 @@ import { Icon } from "react-native-elements";
 import { Feather } from "@expo/vector-icons";
 import ListItem from "../compornents/ListItem";
 
-const DATA = [
-  {
-    id: "Item1",
-    title: "First Item",
-  },
-  {
-    id: "Item2",
-    title: "Second Item",
-  },
-  {
-    id: "Item3",
-    title: "Third Item",
-  },
-  {
-    id: "Item4",
-    title: "Third Item",
-  },
-  {
-    id: "Item5",
-    title: "Third Item",
-  },
-  {
-    id: "Item6",
-    title: "Third Item",
-  },
-];
+var DATA:any = [];
 
-const ListScreen = ({ navigation }: { navigation: any }) => {
+
+
+const ListScreen = ({ route,navigation }: { navigation: any }) => {
+  const { type } = route.params;
+  const [loading, setLoading] = useState(true);
+    const [produces, setProduces] = useState({});
+  useEffect(() => {
+    async function getUserInfo(){
+      DATA = [];
+      let doc = await firebase
+      .firestore()
+      .collection('produce')
+      .where('type', "==", type)
+      .get();
+
+      doc.docs.map(element =>
+        DATA.push(element.data()) );
+        setProduces(DATA);
+                setLoading(false);
+    }
+    getUserInfo();
+  })
+  const renderItem = ({ item }) => (
+    <ListItem description={item.description} name={item.name} url={item.url} />
+  );
   return (
     <SafeAreaView style={styles.container}>
       <TouchableOpacity
@@ -70,8 +71,8 @@ const ListScreen = ({ navigation }: { navigation: any }) => {
         </View>
 
         <FlatList
-          data={DATA}
-          renderItem={ListItem}
+          data={produces}
+          renderItem={renderItem}
           keyExtractor={(item) => item.id}
         />
       </TouchableOpacity>

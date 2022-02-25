@@ -49,7 +49,7 @@ const MainScreen = ({ navigation }: { navigation: any }) => {
           style={styles.boxStyle}
           onPress={() => {
             console.log("Vegetables Pressed!");
-            navigation.navigate("Lists");
+            navigation.navigate("Lists",{"type":"vegetable"});
           }}
         >
           <Image
@@ -62,7 +62,7 @@ const MainScreen = ({ navigation }: { navigation: any }) => {
           style={styles.boxStyle}
           onPress={() => {
             console.log("Fruits Pressed!");
-            navigation.navigate("Lists");
+            navigation.navigate("Lists",{"type":"fruit"});
           }}
         >
           <Image
