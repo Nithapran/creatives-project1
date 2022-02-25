@@ -10,18 +10,18 @@ var item = {
   location: "Canada",
 };
 
-const tabs = ({ name, description, url }) => {
+const tabs = ({ produce }) => {
   return (
     <ListItem bottomDivider={false} containerStyle={styles.container}>
       <Avatar
         rounded={true}
         style={styles.avatarStyle}
-        source={{ uri: url }}
+        source={{ uri: produce.url }}
       />
       <ListItem.Content>
-        <ListItem.Title style={styles.titleSyle}>{name}</ListItem.Title>
+        <ListItem.Title style={styles.titleSyle}>{produce.name}</ListItem.Title>
         <ListItem.Subtitle numberOfLines={2}>
-          {description}
+          {produce.description}
         </ListItem.Subtitle>
         <View style={styles.rowStyle}>
           <Image

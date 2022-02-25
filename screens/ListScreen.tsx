@@ -41,7 +41,7 @@ const ListScreen = ({ route,navigation }: { navigation: any }) => {
     getUserInfo();
   })
   const renderItem = ({ item }) => (
-    <ListItem description={item.description} name={item.name} url={item.url} />
+    <ListItem produce={item} />
   );
   return (
     <SafeAreaView style={styles.container}>
