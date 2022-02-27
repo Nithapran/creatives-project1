@@ -54,7 +54,7 @@ const MainScreen = ({ navigation }: { navigation: any }) => {
             navigation.navigate("Lists",{"type":"vegetable"});
           }}
         >
-          <CategoryView type={'fruit'}/>
+          <CategoryView type={'vegetable'}/>
           
         </TouchableOpacity>
         <TouchableOpacity
@@ -64,7 +64,7 @@ const MainScreen = ({ navigation }: { navigation: any }) => {
             navigation.navigate("Lists",{"type":"fruit"});
           }}
         >
-          <CategoryView type={'vegetable'}/>
+          <CategoryView type={'fruit'}/>
         </TouchableOpacity>
       </View>
 
