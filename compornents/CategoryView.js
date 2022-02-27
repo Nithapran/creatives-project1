@@ -71,9 +71,13 @@ const styles = StyleSheet.create({
     elevation: 9,
       },
       imageStyle: {
+        height:124
+        ,
+        width:153,
          marginTop:10,
-         marginLeft:10,
-         marginRight:10,
+         marginLeft:15,
+         marginRight:15,
+         marginBottom:10,
       },
       textStyle: {
         fontFamily: "Montserrat_500Medium",

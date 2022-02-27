@@ -23,22 +23,33 @@ const ListScreen = ({ route,navigation }: { navigation: any }) => {
   const { type } = route.params;
   const [loading, setLoading] = useState(true);
     const [produces, setProduces] = useState({});
-  useEffect(() => {
-    async function getUserInfo(){
-      DATA = [];
-      let doc = await firebase
-      .firestore()
-      .collection('produce')
-      .where('type', "==", type)
-      .get();
-
-      doc.docs.map(element =>
-        DATA.push(element.data()) );
-        setProduces(DATA);
-                setLoading(false);
+    const [filteredproduces, setFilteredproduces] = useState({});
+    useEffect(() => {
+      async function getUserInfo(){
+        DATA = [];
+        let doc = await firebase
+        .firestore()
+        .collection('produce')
+        .where('type', "==", type)
+        .get();
+  
+        doc.docs.map(element =>
+          DATA.push(element.data()) );
+          console.log("Called")
+          setProduces(DATA);
+          setFilteredproduces(DATA);
+                  setLoading(false);
+      }
+      getUserInfo();
+    },[])
+  
+    const handleChahnge = (text) => {
+      var filtered =  produces.filter(function(produce) {
+        return produce.name.toLowerCase().includes(text.toLowerCase());
+      });
+      setFilteredproduces(filtered)
+       
     }
-    getUserInfo();
-  })
   const renderItem = ({ item }) => (
     <ListItem produce={item} navigation={navigation} />
   );
@@ -52,8 +63,9 @@ const ListScreen = ({ route,navigation }: { navigation: any }) => {
               source={require("../assets/search.png")}
             />
             <TextInput
+            onChangeText={(text) => handleChahnge(text)}
               style={styles.searchBarStyle}
-              placeholder="Search for a product"
+              placeholder="Search for a produce"
             />
           </View>
 
@@ -66,7 +78,7 @@ const ListScreen = ({ route,navigation }: { navigation: any }) => {
         </View>
 
         <FlatList
-          data={produces}
+          data={filteredproduces}
           renderItem={renderItem}
           keyExtractor={(item) => item.id}
         />
