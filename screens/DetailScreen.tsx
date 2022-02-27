@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import React from "react";
+import * as React from "react";
 import {
   StyleSheet,
   Text,
@@ -21,7 +21,8 @@ import {
   Montserrat_500Medium,
   Montserrat_700Bold,
 } from "@expo-google-fonts/montserrat";
-export default function App() {
+export default function App({ route,navigation }: { route: any,navigation: any }) {
+  const { produce } = route.params;
   let [fontsLoaded, error] = useFonts({
     Montserrat_400Regular,
     Montserrat_500Medium,
@@ -33,25 +34,14 @@ export default function App() {
   }
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.topback }}>
-      {/* <View style={{flex:.15, backgroundColor:'green',padding:20,flexDirection:'row',justifyContent:'space-between'}}>
-              <View style={{width:50,height:50,backgroundColor:'pink'}}>
-                <Image style={{height:50,width:50}}
-                source={require('./assets/backicon.png')}
-                />
-              </View>
-              <View style={{width:50,height:50,backgroundColor:'orange'}}>
-              <Image style={{height:50,width:50}}
-                source={require('./assets/hearticon.png')}
-                />
-              </View>
-        </View> */}
+      
       <View
         style={{ flex: 1.1, alignItems: "center", justifyContent: "center" }}
       >
-        <View style={{ width: 300, height: 220 }}>
+        <View style={{ width: 300, height: 220, }}>
           <Image
-            style={{ height: 220, width: 300 }}
-            source={require("./assets/orangepic.png")}
+            style={{ height: 220, width: 300,resizeMode:'cover' }}
+            source={{ uri: produce.url }}
           />
         </View>
       </View>
@@ -72,7 +62,7 @@ export default function App() {
               fontWeight: "600",
             }}
           >
-            Orange
+            {produce.name}
           </Text>
         </View>
         <View
@@ -97,27 +87,18 @@ export default function App() {
         <View style={{ flex: 2.5 }}>
           <Text style={{ fontSize: 25, fontWeight: "500" }}>About</Text>
           <Text style={{ fontSize: 15, fontWeight: "300", paddingTop: 10 }}>
-            it is a long established fact that a reader will be distracted by
-            the readable content of a page when looking at its layout. The point
-            of using Lorem Ipsum is that it has a more-or-less normal
-            distribution of letters, as opposed to using 'Content here, content
-            here', making it look like readable English. Many desktop publishing
-            packages and web page editors now use Lorem Ipsum as their default
-            model text, and a search for 'lorem ipsum' will uncover many web
-            sites still in their infancy. Various versions have evolved over the
-            years, sometimes by accident, sometimes on purpose (injected humour
-            and the like).
+          {produce.description}
           </Text>
         </View>
       </View>
     </SafeAreaView>
   );
 }
-const designsheet = { backgroundColor: "orange" };
+const designsheet = { backgroundColor: "white" };
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "white",
     paddingTop: Platform.OS === "android" ? 20 : 0,
   },
 });
