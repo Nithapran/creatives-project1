@@ -17,6 +17,8 @@ import {
   Montserrat_700Bold,
 } from "@expo-google-fonts/montserrat";
 
+import CategoryView from "../compornents/CategoryView";
+
 const MainScreen = ({ navigation }: { navigation: any }) => {
   let [fontsLoaded, error] = useFonts({
     Montserrat_400Regular,
@@ -44,32 +46,25 @@ const MainScreen = ({ navigation }: { navigation: any }) => {
         <Text style={styles.categoryTexStyle}>Categories</Text>
       </View>
 
-      <View style={styles.boxSectionStyle}>
+      <View style={styles.categoryContainer}>
         <TouchableOpacity
-          style={styles.boxStyle}
+          style={styles.categoryContainer}
           onPress={() => {
             console.log("Vegetables Pressed!");
             navigation.navigate("Lists",{"type":"vegetable"});
           }}
         >
-          <Image
-            style={styles.image1Style}
-            source={require("./../assets/Vegetable.png")}
-          />
-          <Text style={styles.textStyle}>Vegetables</Text>
+          <CategoryView type={'fruit'}/>
+          
         </TouchableOpacity>
         <TouchableOpacity
-          style={styles.boxStyle}
+          style={styles.categoryContainer}
           onPress={() => {
             console.log("Fruits Pressed!");
             navigation.navigate("Lists",{"type":"fruit"});
           }}
         >
-          <Image
-            style={styles.image2Style}
-            source={require("./../assets/Fruits.png")}
-          />
-          <Text style={styles.textStyle}>Fruits</Text>
+          <CategoryView type={'vegetable'}/>
         </TouchableOpacity>
       </View>
 
@@ -84,9 +79,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    alignItems: "flex-start",
+    
     padding: 15,
     paddingBottom: 100,
+  },
+  categoryContainer: {
+    marginTop:15,
+    marginBottom:15,
+    alignItems:"center"
   },
   searchbar: {
     width: "100%",
