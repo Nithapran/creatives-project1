@@ -21,12 +21,12 @@ const tabs = ({ produce,navigation }) => {
       <Avatar
         rounded={true}
         style={styles.avatarStyle}
-        source={{ uri: produce.url }}
+        source={{ uri: produce != null ? produce.url : item.URL }}
       />
       <ListItem.Content>
-        <ListItem.Title style={styles.titleSyle}>{produce.name}</ListItem.Title>
+        <ListItem.Title style={styles.titleSyle}>{produce != null ? produce.name : item.name}</ListItem.Title>
         <ListItem.Subtitle numberOfLines={2}>
-          {produce.description}
+          {produce != null ? produce.description : item.Description}
         </ListItem.Subtitle>
         <View style={styles.rowStyle}>
           <Image
