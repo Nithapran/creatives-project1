@@ -14,7 +14,9 @@ const tabs = ({ produce,navigation }) => {
   return (
     <TouchableOpacity
     onPress={() => {
-      navigation.navigate("Detail");
+      navigation.navigate("Detail",{
+        produce: produce
+      });
     }}
   >
     <ListItem bottomDivider={false} containerStyle={styles.container}>
