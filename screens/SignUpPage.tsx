@@ -36,7 +36,7 @@ import {
   Raleway_700Bold_Italic,
   Raleway_800ExtraBold_Italic,
   Raleway_900Black_Italic,
-} from '@expo-google-fonts/raleway';
+} from "@expo-google-fonts/raleway";
 import AppLoading from "expo-app-loading";
 
 const SignUpPage = ({ navigation }: { navigation: any }) => {
@@ -116,12 +116,9 @@ const SignUpPage = ({ navigation }: { navigation: any }) => {
 
   return (
     <SafeAreaView style={styles.wrapper}>
-      
-
       <KeyboardAwareScrollView>
         <View style={styles.topBox}>
-          
-        <Image
+          <Image
             style={styles.logoStyle}
             source={require("../assets/newlogo.png")}
           />
@@ -129,35 +126,35 @@ const SignUpPage = ({ navigation }: { navigation: any }) => {
             style={{
               marginTop: 20,
               fontFamily: "Raleway_800ExtraBold",
-              color:"#bf9449",
+              color: "#bf9449",
               fontSize: 15,
             }}
           >
             All Produce In One Place
           </Text>
-            <TextInput
+          <TextInput
             style={styles.input}
             placeholder="Email"
             value={user}
             autoCapitalize="none"
             onChangeText={(text) => setUsername(text)}
-            />
-          
+          />
+
           <TextInput
             style={styles.input}
             secureTextEntry={true}
             placeholder="password"
             value={pass}
             onChangeText={(text) => setPassword(text)}
-            />
-          
+          />
+
           <TextInput
             style={styles.input}
             secureTextEntry={true}
             placeholder="password"
             value={passConfirm}
             onChangeText={(text) => setPasswordConfirm(text)}
-            />
+          />
           <Text>{status}</Text>
           <TouchableOpacity
             style={styles.buttonStyle}
@@ -168,8 +165,6 @@ const SignUpPage = ({ navigation }: { navigation: any }) => {
             <Text style={styles.buttonText}>Sign Up</Text>
           </TouchableOpacity>
         </View>
-
-        
       </KeyboardAwareScrollView>
     </SafeAreaView>
   );
@@ -180,10 +175,10 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   topBox: {
-    justifyContent: 'center',
-alignItems: 'center',
-flex: 1,
-marginBottom:20
+    justifyContent: "center",
+    alignItems: "center",
+    flex: 1,
+    marginBottom: 20,
   },
 
   bottomBox: {
@@ -195,7 +190,7 @@ marginBottom:20
     height: 100,
   },
   iconStyle: {
-    marginTop:20,
+    marginTop: 20,
     width: 50,
     height: 50,
   },
@@ -203,9 +198,9 @@ marginBottom:20
     marginTop: 20, //
     width: 100,
     height: 100,
-    borderColor:"#616161",
-    borderRadius:50,
-    borderWidth:0.2,
+    borderColor: "#616161",
+    borderRadius: 50,
+    borderWidth: 0.2,
   },
 
   buttonStyle: {
@@ -219,7 +214,7 @@ marginBottom:20
   },
 
   buttonFont: {
-    fontSize:20,
+    fontSize: 20,
     color: "white",
   },
   input: {

@@ -1,5 +1,12 @@
 import * as React from "react";
-import { View, Image, Switch, Text, StyleSheet,TouchableOpacity } from "react-native";
+import {
+  View,
+  Image,
+  Switch,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+} from "react-native";
 import { ListItem, Avatar } from "react-native-elements";
 
 var item = {
@@ -10,42 +17,44 @@ var item = {
   location: "Canada",
 };
 
-const tabs = ({ produce,navigation }) => {
+const tabs = ({ produce, navigation }) => {
   return (
     <TouchableOpacity
-    onPress={() => {
-      navigation.navigate("Detail",{
-        produce: produce
-      });
-    }}
-  >
-    <ListItem bottomDivider={false} containerStyle={styles.container}>
-      <Avatar
-        rounded={true}
-        style={styles.avatarStyle}
-        source={{ uri: produce != null ? produce.url : item.URL }}
-      />
-      <ListItem.Content>
-        <ListItem.Title style={styles.titleSyle}>{produce != null ? produce.name : item.name}</ListItem.Title>
-        <ListItem.Subtitle numberOfLines={2}>
-          {produce != null ? produce.description : item.Description}
-        </ListItem.Subtitle>
-        <View style={styles.rowStyle}>
-          <Image
-            style={styles.iconStyle}
-            source={require("../screens/assets/location.png")}
-            style={styles.iconStyle}
-          />
-          <Text style={styles.textStyle}>{item.location}</Text>
+      onPress={() => {
+        navigation.navigate("Detail", {
+          produce: produce,
+        });
+      }}
+    >
+      <ListItem bottomDivider={false} containerStyle={styles.container}>
+        <Avatar
+          rounded={true}
+          style={styles.avatarStyle}
+          source={{ uri: produce != null ? produce.url : item.URL }}
+        />
+        <ListItem.Content>
+          <ListItem.Title style={styles.titleSyle}>
+            {produce != null ? produce.name : item.name}
+          </ListItem.Title>
+          <ListItem.Subtitle numberOfLines={2}>
+            {produce != null ? produce.description : item.Description}
+          </ListItem.Subtitle>
+          <View style={styles.rowStyle}>
+            <Image
+              style={styles.iconStyle}
+              source={require("../screens/assets/location.png")}
+              style={styles.iconStyle}
+            />
+            <Text style={styles.textStyle}>{item.location}</Text>
 
-          <Image
-            style={styles.iconStyle}
-            source={require("../assets/favorite_48.png")}
-            style={styles.iconStyle}
-          />
-        </View>
-      </ListItem.Content>
-    </ListItem>
+            <Image
+              style={styles.iconStyle}
+              source={require("../assets/favorite_48.png")}
+              style={styles.iconStyle}
+            />
+          </View>
+        </ListItem.Content>
+      </ListItem>
     </TouchableOpacity>
   );
 };

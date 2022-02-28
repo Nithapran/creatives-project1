@@ -1,18 +1,13 @@
 import * as React from "react";
-import {
-  View,
-  Image,
-  Text,
-  StyleSheet,
-} from "react-native";
+import { View, Image, Text, StyleSheet } from "react-native";
 
 import {
-    useFonts,
-    Montserrat_100Bold,
-    Montserrat_400Regular,
-    Montserrat_500Medium,
-    Montserrat_700Bold,
-  } from "@expo-google-fonts/montserrat";
+  useFonts,
+  Montserrat_100Bold,
+  Montserrat_400Regular,
+  Montserrat_500Medium,
+  Montserrat_700Bold,
+} from "@expo-google-fonts/montserrat";
 
 var item = {
   name: "Apple",
@@ -22,11 +17,7 @@ var item = {
   location: "Canada",
 };
 
-
 export default class CategoryView extends React.Component {
-
-
-    
   constructor(props) {
     super(props);
     this.state = { isFruit: props.type == "fruit" ? true : false };
@@ -38,15 +29,25 @@ export default class CategoryView extends React.Component {
     const isFruit = this.state.isFruit;
     if (isFruit) {
       name = "Fruits";
-      image = <Image style={styles.imageStyle} source={require("../assets/fruits.png")} />;
+      image = (
+        <Image
+          style={styles.imageStyle}
+          source={require("../assets/fruits.png")}
+        />
+      );
     } else {
       name = "Vegetables";
-      image = <Image style={styles.imageStyle} source={require("../assets/vegetables.png")} />;
+      image = (
+        <Image
+          style={styles.imageStyle}
+          source={require("../assets/vegetables.png")}
+        />
+      );
     }
 
     return (
       <View style={styles.boxStyle}>
-        {image }
+        {image}
         <Text style={styles.textStyle}>{name}</Text>
       </View>
     );
@@ -54,14 +55,14 @@ export default class CategoryView extends React.Component {
 }
 
 const styles = StyleSheet.create({
-    boxStyle: {
-        justifyContent: "flex-end",
-        alignItems: "center",
-        borderRadius: 20,
-        backgroundColor: "white",
-        alignSelf: 'flex-start',
-        alignItems: "center",
-        shadowColor: "#999999",
+  boxStyle: {
+    justifyContent: "flex-end",
+    alignItems: "center",
+    borderRadius: 20,
+    backgroundColor: "white",
+    alignSelf: "flex-start",
+    alignItems: "center",
+    shadowColor: "#999999",
     shadowOffset: {
       width: 0,
       height: 4,
@@ -69,20 +70,19 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.62,
     shadowRadius: 7.46,
     elevation: 9,
-      },
-      imageStyle: {
-        height:124
-        ,
-        width:153,
-         marginTop:10,
-         marginLeft:15,
-         marginRight:15,
-         marginBottom:10,
-      },
-      textStyle: {
-        fontFamily: "Montserrat_500Medium",
-        fontSize: 25,
-        marginTop:10,
-        marginBottom:10,
-     }
-  });
+  },
+  imageStyle: {
+    height: 124,
+    width: 153,
+    marginTop: 10,
+    marginLeft: 15,
+    marginRight: 15,
+    marginBottom: 10,
+  },
+  textStyle: {
+    fontFamily: "Montserrat_500Medium",
+    fontSize: 25,
+    marginTop: 10,
+    marginBottom: 10,
+  },
+});

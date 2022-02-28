@@ -1,4 +1,3 @@
-import { sleep } from "../helpers";
 import firebase from "firebase/compat";
 import "firebase/compat/auth";
 

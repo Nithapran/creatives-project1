@@ -24,12 +24,28 @@ function StackNavigator() {
     >
       {/*Logged Out Pages*/}
       <Stack.Screen name="Landing" component={LoginPage} />
-      <Stack.Screen name="SignUpPage" options={{headerShown: true}} component={SignUpPage}/>
-      <Stack.Screen name="LoginPage" options={{headerShown: true}} component={LoginPage} />
+      <Stack.Screen
+        name="SignUpPage"
+        options={{ headerShown: true }}
+        component={SignUpPage}
+      />
+      <Stack.Screen
+        name="LoginPage"
+        options={{ headerShown: true }}
+        component={LoginPage}
+      />
 
       {/*Logged In Pages*/}
-      <Stack.Screen name="Lists" options={{headerShown: true}} component={ListScreen} />
-      <Stack.Screen name="Detail" options={{headerShown: true}} component={DetailScreen} />
+      <Stack.Screen
+        name="Lists"
+        options={{ headerShown: true }}
+        component={ListScreen}
+      />
+      <Stack.Screen
+        name="Detail"
+        options={{ headerShown: true }}
+        component={DetailScreen}
+      />
       <Stack.Screen name="AfterLogin" component={AfterLogin} />
     </Stack.Navigator>
   );
