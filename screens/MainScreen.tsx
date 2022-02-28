@@ -51,20 +51,19 @@ const MainScreen = ({ navigation }: { navigation: any }) => {
           style={styles.categoryContainer}
           onPress={() => {
             console.log("Vegetables Pressed!");
-            navigation.navigate("Lists",{"type":"vegetable"});
+            navigation.navigate("Lists", { type: "vegetable" });
           }}
         >
-          <CategoryView type={'vegetable'}/>
-          
+          <CategoryView type={"vegetable"} />
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.categoryContainer}
           onPress={() => {
             console.log("Fruits Pressed!");
-            navigation.navigate("Lists",{"type":"fruit"});
+            navigation.navigate("Lists", { type: "fruit" });
           }}
         >
-          <CategoryView type={'fruit'}/>
+          <CategoryView type={"fruit"} />
         </TouchableOpacity>
       </View>
 
@@ -79,14 +78,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    
+
     padding: 15,
     paddingBottom: 100,
   },
   categoryContainer: {
-    marginTop:15,
-    marginBottom:15,
-    alignItems:"center"
+    marginTop: 15,
+    marginBottom: 15,
+    alignItems: "center",
   },
   searchbar: {
     width: "100%",

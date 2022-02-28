@@ -36,7 +36,7 @@ import {
   Raleway_700Bold_Italic,
   Raleway_800ExtraBold_Italic,
   Raleway_900Black_Italic,
-} from '@expo-google-fonts/raleway';
+} from "@expo-google-fonts/raleway";
 import AppLoading from "expo-app-loading";
 import { color } from "react-native-elements/dist/helpers";
 
@@ -110,80 +110,83 @@ const LoginPage = ({ navigation }: { navigation: any }) => {
   return (
     <SafeAreaView style={styles.wrapper}>
       <View style={styles.topBox}>
-          
-          <Image
-            style={styles.logoStyle}
-            source={require("../assets/newlogo.png")}
-          />
+        <Image
+          style={styles.logoStyle}
+          source={require("../assets/newlogo.png")}
+        />
+        <Text
+          style={{
+            marginTop: 20,
+            fontFamily: "Raleway_800ExtraBold",
+            color: "#bf9449",
+            fontSize: 15,
+          }}
+        >
+          All Produce In One Place
+        </Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Email"
+          onChangeText={(text) => setUsername(text)}
+          value={username}
+          keyboardType="email-address"
+          autoCapitalize="none"
+        />
+        <TextInput
+          style={styles.input}
+          secureTextEntry={true}
+          onChangeText={(text) => setPassword(text)}
+          placeholder="password"
+        />
+        <TouchableOpacity
+          style={styles.buttonStyle}
+          onPress={() => {
+            login();
+          }}
+        >
+          <Text style={styles.buttonText}>Login</Text>
+        </TouchableOpacity>
+        <Text
+          style={{
+            marginTop: 20,
+            fontFamily: "Raleway_700Bold",
+            fontWeight: "700",
+          }}
+        >
+          Didn't have an account?{" "}
+        </Text>
+        <TouchableOpacity
+          style={{ marginTop: 20 }}
+          onPress={() => {
+            navigation.navigate("SignUpPage");
+          }}
+        >
           <Text
             style={{
-              marginTop: 20,
-              fontFamily: "Raleway_800ExtraBold",
-              color:"#bf9449",
-              fontSize: 15,
+              color: "blue",
+              fontFamily: "Raleway_700Bold",
+              fontWeight: "700",
             }}
           >
-            All Produce In One Place
+            Sign Up
           </Text>
-          <TextInput
-            style={styles.input}
-            placeholder="Email"
-            onChangeText={(text) => setUsername(text)}
-            value={username}
-            keyboardType="email-address"
-            autoCapitalize="none"
-          />
-          <TextInput
-            style={styles.input}
-            secureTextEntry={true}
-            onChangeText={(text) => setPassword(text)}
-            placeholder="password"
-          />
-          <TouchableOpacity
-            style={styles.buttonStyle}
-            onPress={() => {
-              login();
-            }}
-          >
-            <Text style={styles.buttonText}>Login</Text>
-          </TouchableOpacity>
-          <Text
-            style={{ marginTop: 20, fontFamily: "Raleway_700Bold", fontWeight: "700" }}
-          >
-            Didn't have an account?{" "}
-          </Text>
-          <TouchableOpacity
-            style={{ marginTop: 20 }}
-            onPress={() => {
-              navigation.navigate("SignUpPage");
-            }}
-          >
-            <Text
-              style={{
-                color: "blue",
-                fontFamily: "Raleway_700Bold",
-                fontWeight: "700",
-              }}
-            >
-              Sign Up
-            </Text>
-          </TouchableOpacity>
-        </View>
+        </TouchableOpacity>
+      </View>
     </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
   wrapper: {
-    flex:1,
+    flex: 1,
   },
   topBox: {
-    justifyContent: 'center',
-alignItems: 'center',
-flex: 1,
-marginBottom:20
+    justifyContent: "center",
+    alignItems: "center",
+    flex: 1,
+    marginBottom: 20,
   },
-  
+
   navButtonsWrapper: {
     height: 100,
   },
@@ -191,9 +194,9 @@ marginBottom:20
     marginTop: 20, //
     width: 100,
     height: 100,
-    borderColor:"#616161",
-    borderRadius:50,
-    borderWidth:0.2,
+    borderColor: "#616161",
+    borderRadius: 50,
+    borderWidth: 0.2,
   },
 
   buttonStyle: {

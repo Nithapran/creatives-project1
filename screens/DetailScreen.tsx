@@ -21,7 +21,13 @@ import {
   Montserrat_500Medium,
   Montserrat_700Bold,
 } from "@expo-google-fonts/montserrat";
-export default function App({ route,navigation }: { route: any,navigation: any }) {
+export default function App({
+  route,
+  navigation,
+}: {
+  route: any;
+  navigation: any;
+}) {
   const { produce } = route.params;
   let [fontsLoaded, error] = useFonts({
     Montserrat_400Regular,
@@ -34,13 +40,12 @@ export default function App({ route,navigation }: { route: any,navigation: any }
   }
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.topback }}>
-      
       <View
         style={{ flex: 1.1, alignItems: "center", justifyContent: "center" }}
       >
-        <View style={{ width: 300, height: 220, }}>
+        <View style={{ width: 300, height: 220 }}>
           <Image
-            style={{ height: 220, width: 300,resizeMode:'cover' }}
+            style={{ height: 220, width: 300, resizeMode: "cover" }}
             source={{ uri: produce.url }}
           />
         </View>
@@ -87,7 +92,7 @@ export default function App({ route,navigation }: { route: any,navigation: any }
         <View style={{ flex: 2.5 }}>
           <Text style={{ fontSize: 25, fontWeight: "500" }}>About</Text>
           <Text style={{ fontSize: 15, fontWeight: "300", paddingTop: 10 }}>
-          {produce.description}
+            {produce.description}
           </Text>
         </View>
       </View>

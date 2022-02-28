@@ -15,74 +15,68 @@ import { Icon } from "react-native-elements";
 import { Feather } from "@expo/vector-icons";
 import ListItem from "../compornents/ListItem";
 
-var DATA:any = [];
+var DATA: any = [];
 
-
-
-const ListScreen = ({ route,navigation }: { navigation: any }) => {
+const ListScreen = ({ route, navigation }: { navigation: any }) => {
   const { type } = route.params;
   const [loading, setLoading] = useState(true);
-    const [produces, setProduces] = useState({});
-    const [filteredproduces, setFilteredproduces] = useState({});
-    useEffect(() => {
-      async function getUserInfo(){
-        DATA = [];
-        let doc = await firebase
+  const [produces, setProduces] = useState({});
+  const [filteredproduces, setFilteredproduces] = useState({});
+  useEffect(() => {
+    async function getUserInfo() {
+      DATA = [];
+      let doc = await firebase
         .firestore()
-        .collection('produce')
-        .where('type', "==", type)
+        .collection("produce")
+        .where("type", "==", type)
         .get();
-  
-        doc.docs.map(element =>
-          DATA.push(element.data()) );
-          console.log("Called")
-          setProduces(DATA);
-          setFilteredproduces(DATA);
-                  setLoading(false);
-      }
-      getUserInfo();
-    },[])
-  
-    const handleChahnge = (text) => {
-      var filtered =  produces.filter(function(produce) {
-        return produce.name.toLowerCase().includes(text.toLowerCase());
-      });
-      setFilteredproduces(filtered)
-       
+
+      doc.docs.map((element) => DATA.push(element.data()));
+      console.log("Called");
+      setProduces(DATA);
+      setFilteredproduces(DATA);
+      setLoading(false);
     }
+    getUserInfo();
+  }, []);
+
+  const handleChahnge = (text) => {
+    var filtered = produces.filter(function (produce) {
+      return produce.name.toLowerCase().includes(text.toLowerCase());
+    });
+    setFilteredproduces(filtered);
+  };
   const renderItem = ({ item }) => (
     <ListItem produce={item} navigation={navigation} />
   );
   return (
     <SafeAreaView style={styles.container}>
-     
-        <View style={styles.topBarContainerStyle}>
-          <View style={styles.searchBarContainerStyle}>
-            <Image
-              style={styles.searchIconStyle}
-              source={require("../assets/search.png")}
-            />
-            <TextInput
+      <View style={styles.topBarContainerStyle}>
+        <View style={styles.searchBarContainerStyle}>
+          <Image
+            style={styles.searchIconStyle}
+            source={require("../assets/search.png")}
+          />
+          <TextInput
             onChangeText={(text) => handleChahnge(text)}
-              style={styles.searchBarStyle}
-              placeholder="Search for a produce"
-            />
-          </View>
-
-          <View style={styles.filterButtonContainer}>
-            <Image
-              style={styles.filterButtonStyle}
-              source={require("../assets/filter.png")}
-            />
-          </View>
+            style={styles.searchBarStyle}
+            placeholder="Search for a produce"
+          />
         </View>
 
-        <FlatList
-          data={filteredproduces}
-          renderItem={renderItem}
-          keyExtractor={(item) => item.id}
-        />
-     
+        <View style={styles.filterButtonContainer}>
+          <Image
+            style={styles.filterButtonStyle}
+            source={require("../assets/filter.png")}
+          />
+        </View>
+      </View>
+
+      <FlatList
+        data={filteredproduces}
+        renderItem={renderItem}
+        keyExtractor={(item) => item.id}
+      />
     </SafeAreaView>
   );
 };
