@@ -163,6 +163,7 @@ const styles = StyleSheet.create({
   iconStyle: {
     width: 50,
     height: 50,
+    borderRadius:15
   },
   buttonStyle: {
     marginStart: 12,
