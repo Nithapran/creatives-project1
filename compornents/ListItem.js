@@ -8,6 +8,9 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { ListItem, Avatar } from "react-native-elements";
+import { checkExist } from "../services/local.service";
+import { useState } from "react";
+import { useEffect } from "react";
 
 var item = {
   name: "Apple",
@@ -17,7 +20,26 @@ var item = {
   location: "Canada",
 };
 
-const tabs = ({ produce, navigation }) => {
+const tabs = ({ produce, navigation,onFavoriteClick }) => {
+  const [favIcon, setFavIcon] = useState(null);
+  const ic = require("../assets/favorite_48.png")
+  const ic_fill = require("../assets/favorite_48-fill.png")
+  useEffect(() => {
+    checkExist(produce.id).then(
+      
+      function(data) { 
+        if (data) {
+          setFavIcon(ic_fill)    
+          console.log('asdasd',checkExist(produce.id))
+        } else {
+          console.log('wwwwww',checkExist(produce.id))
+          setFavIcon(ic)    
+        }
+       }
+      );
+    
+  }, []);
+
   return (
     <TouchableOpacity
       onPress={() => {
@@ -46,12 +68,14 @@ const tabs = ({ produce, navigation }) => {
               style={styles.iconStyle}
             />
             <Text style={styles.textStyle}>{item.location}</Text>
-
+            <TouchableOpacity onPress={()=> onFavoriteClick()}>
             <Image
               style={styles.iconStyle}
-              source={require("../assets/favorite_48.png")}
+              source={favIcon}
               style={styles.iconStyle}
             />
+            </TouchableOpacity>
+            
           </View>
         </ListItem.Content>
       </ListItem>
