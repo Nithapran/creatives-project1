@@ -14,7 +14,7 @@ import React, { useEffect, useState } from "react";
 import { useCallback } from "react";
 import firebase from "firebase/compat";
 import "firebase/compat/firestore";
-import { fetchProduce,deleteAll } from "../services/local.service";
+import { fetchProduce,addProduce } from "../services/local.service";
 
 
 var DATA: any = [];
@@ -43,6 +43,10 @@ const FavouriteScreen = ({ navigation }: { navigation: any }) => {
       );
   };
 
+  const onFavoriteClick = useCallback(
+    (param) => (e) => addProduce(param)
+  );
+
   const onRefresh = React.useCallback(() => {
     setRefreshing(true);
     fetchProd()
@@ -56,7 +60,7 @@ const FavouriteScreen = ({ navigation }: { navigation: any }) => {
     setFilteredproduces(filtered);
   };
   const renderItem = ({ item }) => (
-    <ListItem key={item.id} produce={item} navigation={navigation} />
+    <ListItem key={item.id} produce={item} navigation={navigation} onFavoriteClick={onFavoriteClick(item)} />
   );
   return (
     <SafeAreaView style={styles.container}>
