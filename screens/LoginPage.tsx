@@ -39,6 +39,7 @@ import {
 } from "@expo-google-fonts/raleway";
 import AppLoading from "expo-app-loading";
 import { color } from "react-native-elements/dist/helpers";
+import { deleteDb,createDb } from "../services/local.service";
 
 const LoginPage = ({ navigation }: { navigation: any }) => {
   let [fontsLoaded] = useFonts({
@@ -66,6 +67,8 @@ const LoginPage = ({ navigation }: { navigation: any }) => {
   const [status, setStatus] = useState("");
 
   async function login() {
+    deleteDb();
+    createDb();
     if (username.length <= 0) {
       Alert.alert("You must enter a username");
       return;

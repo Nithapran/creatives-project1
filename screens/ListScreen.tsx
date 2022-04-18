@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useCallback } from "react";
 import firebase from "firebase/compat";
 import "firebase/compat/firestore";
 import {
@@ -14,6 +15,7 @@ import {
 import { Icon } from "react-native-elements";
 import { Feather } from "@expo/vector-icons";
 import ListItem from "../compornents/ListItem";
+import { addProduce,deleteById } from "../services/local.service";
 
 var DATA: any = [];
 
@@ -31,7 +33,12 @@ const ListScreen = ({ route, navigation }: { navigation: any }) => {
         .where("type", "==", type)
         .get();
 
-      doc.docs.map((element) => DATA.push(element.data()));
+      doc.docs.map(function(element) { 
+        var pr = element.data()
+        pr.id = element.id
+        DATA.push(pr)
+       })
+      
       console.log("Called");
       setProduces(DATA);
       setFilteredproduces(DATA);
@@ -40,6 +47,10 @@ const ListScreen = ({ route, navigation }: { navigation: any }) => {
     getUserInfo();
   }, []);
 
+  const onFavoriteClick = useCallback(
+    (param) => (e) => addProduce(param)
+  );
+
   const handleChahnge = (text) => {
     var filtered = produces.filter(function (produce) {
       return produce.name.toLowerCase().includes(text.toLowerCase());
@@ -47,7 +58,7 @@ const ListScreen = ({ route, navigation }: { navigation: any }) => {
     setFilteredproduces(filtered);
   };
   const renderItem = ({ item }) => (
-    <ListItem produce={item} navigation={navigation} />
+    <ListItem produce={item} navigation={navigation} onFavoriteClick={onFavoriteClick(item)} />
   );
   return (
     <SafeAreaView style={styles.container}>
