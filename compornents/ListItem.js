@@ -25,6 +25,22 @@ const tabs = ({ produce, navigation,onFavoriteClick }) => {
   const ic = require("../assets/favorite_48.png")
   const ic_fill = require("../assets/favorite_48-fill.png")
   useEffect(() => {
+    changeImage()
+    
+  }, []);
+
+  const wait = (timeout) => {
+    return new Promise(resolve => setTimeout(resolve, timeout));
+  }
+
+  const onFav = () => {
+    
+    onFavoriteClick();
+    wait(200).then(() => changeImage());
+  }
+
+  const changeImage = () => {
+
     checkExist(produce.id).then(
       
       function(data) { 
@@ -37,8 +53,8 @@ const tabs = ({ produce, navigation,onFavoriteClick }) => {
         }
        }
       );
-    
-  }, []);
+
+  }
 
   return (
     <TouchableOpacity
@@ -68,7 +84,7 @@ const tabs = ({ produce, navigation,onFavoriteClick }) => {
               style={styles.iconStyle}
             />
             <Text style={styles.textStyle}>{item.location}</Text>
-            <TouchableOpacity onPress={()=> onFavoriteClick()}>
+            <TouchableOpacity onPress={onFav}>
             <Image
               style={styles.iconStyle}
               source={favIcon}

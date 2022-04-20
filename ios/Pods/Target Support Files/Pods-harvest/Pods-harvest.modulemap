@@ -1,6 +1,0 @@
-module Pods_harvest {
-  umbrella header "Pods-harvest-umbrella.h"
-
-  export *
-  module * { export * }
-}

@@ -44,7 +44,8 @@ const FavouriteScreen = ({ navigation }: { navigation: any }) => {
   };
 
   const onFavoriteClick = useCallback(
-    (param) => (e) => addProduce(param)
+    (param) => (e) => addProduce(param),
+    fetchProd()
   );
 
   const onRefresh = React.useCallback(() => {
